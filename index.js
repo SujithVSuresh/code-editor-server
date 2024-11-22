@@ -8,14 +8,14 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-      origin: 'http://localhost:5173', // Allow requests from your frontend
+      origin: 'https://code-editor-client-1.onrender.com/', // Allow requests from your frontend
       methods: ['GET', 'POST'],
     },
 });
 
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://code-editor-client-1.onrender.com',
   }));
 
 // Serve static files if needed
