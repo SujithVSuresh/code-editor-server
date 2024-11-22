@@ -3,20 +3,24 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 
-
 const app = express();
 const server = http.createServer(app);
+
+// Apply CORS middleware before initializing Socket.IO
+app.use(cors({
+    origin: 'https://code-editor-client-1.onrender.com', // Remove trailing slash
+    methods: ['GET', 'POST'],
+    credentials: true, // Add this if you're using cookies or authentication headers
+}));
+
+// Initialize Socket.IO with the same CORS configuration
 const io = new Server(server, {
     cors: {
-      origin: 'https://code-editor-client-1.onrender.com/', // Allow requests from your frontend
-      methods: ['GET', 'POST'],
+        origin: 'https://code-editor-client-1.onrender.com', // Remove trailing slash
+        methods: ['GET', 'POST'],
+        credentials: true,
     },
 });
-
-
-app.use(cors({
-    origin: 'https://code-editor-client-1.onrender.com/',
-  }));
 
 // Serve static files if needed
 app.get('/', (req, res) => {
