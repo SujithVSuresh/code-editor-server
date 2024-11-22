@@ -15,7 +15,7 @@ const io = new Server(server, {
 
 
 app.use(cors({
-    origin: 'https://code-editor-client-1.onrender.com',
+    origin: 'https://code-editor-client-1.onrender.com/',
   }));
 
 // Serve static files if needed
